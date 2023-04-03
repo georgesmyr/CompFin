@@ -1,0 +1,59 @@
+\documentclass[11pt]{report}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts} 
+
+
+\title{Computational Finance\\ Exercise Set I}
+\author{Georgios Smyridis}
+
+
+\begin{document}
+\maketitle
+
+
+\section*{Exercise 1}
+First, I am going to prove the property $\mathbb{E}[(X-\mathbb{E}[X])^2]=\mathbb{E}[X^2]-\mathbb{E}[X]^2$.
+\begin{align}
+	\mathbb{E}[(X-\mathbb{E}[X])^2]&=\mathbb{E}\big[X^2-2\mathbb{E}[X]X+\mathbb{E}[X]^2\big]\nonumber\\
+	&=\mathbb{E}[X^2]+\mathbb{E}\big[-2E[X]X\big]+\mathbb{E}\big[\mathbb{E}[X]^2\big]\nonumber\\
+	&=\mathbb{E}[X^2]-2\mathbb{E}[X]\mathbb{E}[X]+\mathbb{E}[X]^2\nonumber\\
+	&=\mathbb{E}[X^2]-\mathbb{E}[X]^2.\nonumber
+\end{align}
+In the second line, we used the property of expectation values $\mathbb{E}[X+Y]=\mathbb{E}[X]+\mathbb{E}[Y]$. In the third line, we used the property $\mathbb{E}[\alpha X]=\alpha\mathbb{E}[X]$.
+
+Now, with this property, it is easy to show that $\mathbb{V}ar[\alpha X]=\alpha\mathbb{V}ar[X]$. By definition, $\mathbb{V}ar[X]=\mathbb{E}[(X-\mathbb{E}[X])^2]=\mathbb{E}[X^2]-\mathbb{E}[X]^2$. Therefore,
+\begin{align}
+	\mathbb{V}ar[\alpha X]&=\mathbb{E}[(\alpha X)^2]-\mathbb{E}[\alpha X]^2\nonumber\\
+	&=\mathbb{E}[\alpha^2 X^2]-(\alpha\mathbb{E}[X])^2\nonumber\\
+	&=\alpha^2\mathbb{E}[X^2]-\alpha^2\mathbb{E}[X]^2\nonumber\\
+	&=\alpha^2(\mathbb{E}[X^2]-\mathbb{E}[X]^2)\nonumber\\
+	&=\alpha^2\mathbb{V}ar[X],\nonumber
+\end{align}
+where, again, we have used the two properties of expectation values mentioned above.
+
+
+\section*{Exercise 6}
+
+The goal of this exercise is to prove that the standard distribution function $F_{\mathcal{N}(0,1)}(x)$, define by
+\begin{align}
+	F_{\mathcal{N}(0,1)}(x)=\frac1{\sqrt{2\pi}}\int_{-\infty}^x ds\ \exp\bigg(\frac{-s^2}{2}\bigg),
+\end{align}
+can be calculated with the so-called error function
+\begin{align}
+	\text{erf}(x)=\frac2{\sqrt{\pi}}\int_0^x ds\ \exp\big(-s^2),
+\end{align}
+with the help of the relationship
+\begin{align}
+	F_{\mathcal{N}(0,1)}(x)=\frac12\bigg[1+\text{erf}\bigg(\frac{x}{\sqrt{2}}\bigg)\bigg]
+\end{align}
+To demonstrate this, one can start from the very definition of the standard distribution function
+\begin{align}
+	F_{\mathcal{N}(0,1)}&=\frac1{\sqrt{2\pi}}\int_{-\infty}^x ds\ \exp\bigg(\frac{-s^2}2\bigg)\nonumber\\
+	&=\frac1{\sqrt{2\pi}}\bigg[\int_{-\infty}^0ds\ \exp\bigg(\frac{-s^2}2\bigg)+\int_0^x ds\ \exp\bigg(\frac{-s^2}2\bigg)\bigg]\nonumber\\
+	&=\frac1{\sqrt{2\pi}}\bigg[\sqrt{\frac{\pi}2}+\text{erf}\bigg(\frac{x}{\sqrt{2}}\bigg)\bigg]\nonumber\\
+	&=\frac12\bigg[1+\text{erf}\bigg(\frac{x}{\sqrt{2}}\bigg)\bigg]
+\end{align}
+
+
+\end{document}
